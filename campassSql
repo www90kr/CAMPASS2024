@@ -1,0 +1,345 @@
+  CREATE TABLE "BUYER" 
+   (	"USERNAME" VARCHAR2(100 CHAR), 
+	"BPASSWORD" VARCHAR2(100 CHAR), 
+	"BEMAIL" VARCHAR2(100 CHAR), 
+	"BNICKNAME" VARCHAR2(100 CHAR), 
+	"BNAME" VARCHAR2(100 CHAR), 
+	"BTEL" NUMBER(38,0), 
+	"BADRESS" VARCHAR2(100 CHAR), 
+	"ENABLED" NUMBER(1,0) DEFAULT 1, 
+	"ROLE" VARCHAR2(15 CHAR) DEFAULT 'ROLE_BUYER'
+   ) ;
+   
+   
+     CREATE TABLE "SELLER" 
+   (	"USERNAME" VARCHAR2(100 CHAR), 
+	"SPASSWORD" VARCHAR2(100 CHAR), 
+	"SEMAIL" VARCHAR2(100 CHAR), 
+	"SNAME" VARCHAR2(100 CHAR), 
+	"STEL" NUMBER(38,0), 
+	"BUSINESSNAME" VARCHAR2(100 CHAR), 
+	"BUSINESSNO" NUMBER(15,0), 
+	"ENABLED" NUMBER(1,0) DEFAULT 1, 
+	"ROLE" VARCHAR2(15 CHAR) DEFAULT 'ROLE_SELLER'
+   ) ;
+
+  CREATE TABLE "BOARD" 
+   (	"BNO" NUMBER(10,0), 
+	"BCONTENT" CLOB, 
+	"BTITLE" VARCHAR2(50 CHAR), 
+	"BWRITETIME" DATE DEFAULT sysdate, 
+	"USERNAME" VARCHAR2(15 CHAR), 
+	"BCATECODE" VARCHAR2(50 CHAR), 
+	"READCNT" NUMBER(10,0) DEFAULT 0, 
+	"GOODCNT" NUMBER(10,0) DEFAULT 0, 
+	"BADCNT" NUMBER(10,0) DEFAULT 0, 
+	"COMMENTCNT" NUMBER(10,0) DEFAULT 0
+   ) ;
+
+CREATE TABLE reservation (
+	rCode	number(10)	,
+	re_username	varchar2(15 char)	,
+	rName	varchar2(50 char)	,
+	rCheckIn	DATE	,
+	rCheckOut	DATE	,
+	rTel	varchar2(50 char)	,
+	rDate	DATE	,
+	rPrice	number(10)	,
+	re_czCode	number(10),
+	re_cCode	number(10),
+rBankNo varchar2(40 char),
+rBank varchar2(20 char)	,
+rstatus varchar2(20 char)
+);
+
+
+
+CREATE TABLE cArea (
+	caCode	number(10)	,
+	caName	varchar2(50 char)	
+);
+
+CREATE TABLE Review (
+	cReviewNo	number(10)	,
+	cReviewContent	varchar2(100 char)	,
+	cReviewDate	DATE	,
+	cReviewStar	number(1)	,
+	cReview_rCode	number(10)	,
+	cReview_username	varchar2(15 char)	,
+	cReview_cCode	number(10)	
+);
+
+CREATE TABLE cType (
+	ctCode	number(10)	,
+	ctName	varchar2(50 char)	
+);
+
+CREATE TABLE cZone (
+	czCode	number(10)	,
+	cz_cCode	number(10)	,
+	czName	varchar2(50 char)	,
+	czPrice	number(10)	,
+	czContent	CLOB	,
+	czPhoto	varchar2(100 char)	,
+	czFileName	varchar2(100 char),	
+    cz_username varchar2(50 char)
+);
+
+CREATE TABLE camping (
+	cCode	number(10)	,
+	cTel	varchar2(50 char)	,
+	cName	varchar2(50 char)	,
+	cContent	CLOB	,
+	cAddr	varchar2(150 char)	,
+	cSite	varchar2(150 char)	,
+	cLikeCnt	number(10)	,
+	cReviewStarSum	number(10)	,
+    c_caCode	number(10)	,
+    c_ctCode	number(10)	,
+    c_cOptionCode	number(10)	,
+	cReviewCnt	number(10)	,
+    c_username	varchar2(15 char),	
+	cPhoto	varchar2(100char)	,
+	cFileName	varchar2(100char)	
+);
+
+
+
+insert into camping values(1, '050350588051', '가평 새연글램핑카라반설악2호점', '안녕하세요. 가평 션샤인글램핑카라반입니다.', '경기도 가평군 설악면 유명로 1939-26', 'www',0,0,3,1,1,0,'선샤인글램핑카라반','https://i.postimg.cc/JzqV78Rx/1.png','');
+insert into camping values(4, '050350586551', '가평 남이섬베스트캠핑장펜션', '독채객실, 매점/편의점, 주차가능', '경기도 가평군 북한강변로 517-8', 'www',0,0,3,1,1,0,'남이섬베스트캠핑장펜션','https://i.postimg.cc/g0SCRKX6/4.png','');
+insert into camping values(2, '050350570518', '가평구름위산책펜션글램핑미온수수영장', '안녕하세요. 가평구름위산책펜션글램핑미온수수영장 입니다. 저희 펜션은 대형 야외수영장,독립형 개별바베큐 테라스 보유한 펜션입니다. 감사합니다.', '경기도 가평군 조종면 운악청계로 238-38', 'www',0,0,3,2,1,0,'구름위산책펜션글램핑미온수수영장','https://i.postimg.cc/m2s5PnX5/2.png','');
+insert into camping values(3, '050350572451', '가평 포세이돈카라반', '시원한 물살을 가르며 수상 레저를 즐길 수 있는 포세이돈', '경기도 가평군 청평면 고재길 262-118', 'www',0,0,3,3,1,0,'포세이돈카라반','https://i.postimg.cc/sD407JbD/3.png','');
+insert into camping values(6, '050350570518', '삼척 타요카라반펜션', '안녕하세요, 삼척 타요카라반입니다.', '강원도 삼척시 오분동 1-40 ', 'www',0,0,3,3,1,0,'타요카라반펜션','https://i.postimg.cc/6p6b0vNV/6.png','');
+insert into camping values(8, '050350591316', '영월 휴가든카라반', '안녕하세요 영월 휴가든카라반입니다.', '강원도 영월군 영월읍 복덕원길 45', 'www',0,0,3,3,1,0,'휴가든카라반','https://i.postimg.cc/h41GwfYZ/14.png','');
+insert into camping values(7, '050350591080', '포천 호랑이캠핑', '안녕하세요. 포천 호랑이캠핑입니다.', '경기도 포천시 영북면 새낭로 919 ', 'www',0,0,2,1,1,0,'포천 호랑이캠핑','https://i.postimg.cc/Vvmkv8JF/13.png','');
+insert into camping values(5, '050350581404', '포천 쌤초이글램핑', '안녕하세요. 포천 쌤초이글램핑입니다.', '경기도 포천시 이동면 금강로 6169 ', 'www',0,0,2,2,1,0,'쌤초이글램핑','https://i.postimg.cc/xTvBgQNQ/5.png','');
+insert into camping values(9, '050350587547', '이천 인디어라운드글램핑', '당신의 꿈이 현실이 되는 곳. 저희 인디어라운드는 7가지의 컨셉별 테마를 가진 카페와 감성 글램핑 및 피크닉, BBQ를 모두 한자리에서 즐길 수 있는 신개념 테마공간입니다.', '경기도 이천시 이섭대천로941번길 49-44', 'www',0,0,2,2,1,0,'인디어라운드글램핑','https://i.postimg.cc/c41JNdyx/15.png','');
+insert into camping values(12, '050350570518', '대부도(영흥도) 포레스트카라반', '안녕하세요. 대부도(영흥도) 포레스트카라반펜션 입니다.', '인천광역시 옹진군 영흥면 영흥로643번길 22' , 'www',0,0,2,3,1,0,'포레스트카라반','https://i.postimg.cc/9QKXTT40/18.png','');
+insert into camping values(14, '050350581511', '포천 운악승마캠핑카라반', '제공운악승마캠핑은 포천 운악산자락에 위치한 계곡형 자연휴양지로서, 다양한 레저와 테마를 할 수 있는 가족형 테마파크 입니다.', '경기도 포천시 화현면 화동로432번길 26 운악승마캠핑 (구 운악호스랜드)', 'www',0,0,2,'3,1,0,'운악승마캠핑카라반','https://i.postimg.cc/6QM8vFfL/11.png','');
+insert into camping values(10, '18339306', '영월 우드밸리펜션', '안녕하세요 영월 우드밸리펜션입니다.', '강원도 영월군 김삿갓면 김삿갓로 228-3', 'www',0,0,1,1,1,0,'우드밸리펜션','https://i.postimg.cc/Kv98GCxn/16.png','');
+insert into camping values(13, '18339306', '화천 스카이밸리펜션', '아름다운 자연이 함께하는 곳, 깨끗한 객실과 캠핑사이트까지 준비되어있는 화천 스카이밸리입니다. ', '강원도 화천군 사내면 포화로 64', 'www',0,0,'1','1',1,0,'스카이밸리','https://i.postimg.cc/85sjBwy8/10.png','');
+insert into camping values(11, '16449565', '홍천 아레나펜션글램핑(불멍, 개별화장실)', '밤에는 모닥불을 피워놓으며 불멍도 하고, 별도 보고 아레나는 캠핑의 낭만을 온전히 느낄 수 있는 곳이랍니다. 사랑하는 사람과 아레나에서 특별한 추억을 만들어보세요.', '인천광역시 옹진군 영흥면 영흥로643번길 22 , 'www',0,0,1,2,1,0,포천 호랑이캠핑,'https://i.postimg.cc/wj7T7Fjn/17.png','');
+insert into camping values(16, '050350584946', '영월 오아시스글램핑', '안녕하세요. 오아시스글램핑입니다. ', '강원도 홍천군 북방면 노일로 344-13', 'www',0,0,1,2,1,0,'오아시스글램핑','https://i.postimg.cc/j2pwjNQp/7.png','');
+insert into camping values(15, '050350570518', '강릉 베이스캠프카라반', '안녕하세요 강릉 베이스캠프카라반입니다.', '강원도 영월군 영월읍 선돌길83-27', 'www',0,0,1,3,1,0,'베이스캠프카라반','https://i.postimg.cc/DZDmCsDS/12.png','');
+insert into camping values(18, '050350571026', '태안(안면도) 바다정원 애견동반펜션', '바다정원 펜션은 방포해수욕장 부근에 위치하고 있으며, 넓은 대지에 화이트톤의 깔끔한 목조건물로 바다동과 정원동의 두동의 건물로 나눠져 있습니다.', '충청남도 태안군 안면읍 해안관광로 58', 'www',0,0,6,1,1,0,'바다정원 애견동반펜션','https://i.postimg.cc/x1yJ0XkZ/9.png','');
+insert into camping values(22, '050350586551', '금산 만악리수목원오토캠핑장', '금산 만악리수목원오토캠핑장입니다.', '충청남도 금산군 진산면 초미동길 138-10 ', 'www',0,0,6,1,1,0,'만악리수목원오토캠핑장','https://i.postimg.cc/prBWw6X1/Frame-3.png','');
+insert into camping values(17, '050350590954', '서산 펫앤트리애견글램핑(야외수영장)', '바닷가 옆 넓은 반려견 전용 글램핑장 중소견 및 대형견 분리된 운동장 글램핑마다 개별 펜스 설치 호텔식 침구류 애견카페 1인 1커피 제공 넓은 실내외 놀이터 반려견 셀프 샤워장', '충청남도 서산시 팔봉면 호리중말길 13 ', 'www',0,0,6,2,1,0,'펫앤트리애견글램핑','https://i.postimg.cc/jjxWCRPS/8.png','');
+insert into camping values(19, '050350588687', '태안 별빛바다글램핑펜션', '안녕하세요, 태안 별빛바다글램핑펜션 입니다. 기존 글램핑의 단점을 완벽하게 보완하여, 글램핑 내에 에어컨, 개별화장실 모두 설치되어있습니다.', '충청남도 태안군 원북면 학암포길21-37 ', 'www',0,0,6,2,1,0,'별빛바다글램핑펜션','https://i.postimg.cc/VLDs4phJ/Frame-16.png','');
+insert into camping values(21, '050350590908', '태안 바다풍경카라반펜션', '안녕하세요, 태안 별빛바다글램핑펜션 입니다. 기존 글램핑의 단점을 완벽하게 보완하여, 글램핑 내에 에어컨, 개별화장실 모두 설치되어있습니다.', '충청남도 태안군 원북면 학암포길21-37 ', 'www',0,0,6,3,1,0,'바다풍경카라반펜션','https://i.postimg.cc/9fqWmMQ9/Frame-32.png','');
+insert into camping values(23, '050350590244', '영덕 시포트리조트펜션', '동해안의 히든빌리지 "시포트 리조트"로 여러분을 초대합니다. 영덕 동해안 바다 바로 앞에서 즐기는 "시포트 리조트"로 여러분을 초대합니다. 다양한 타입의 객실들을 구비하고 있는 시포트 리조트에서는 멤버쉽제도를 진행중입니다.', '경상북도 영덕군 축산면 축산항2길 11 ', 'www',0,0,7,1,1,0,'시포트리조트펜션','https://i.postimg.cc/fRyzP54B/Frame-15.png','');
+insert into camping values(20, '050350587207', '산청 펫글램핑', '안녕하세요. 산청펫 글램핑입니다.', '경상남도 산청군 금서면 화계오봉로 349-35 ', 'www',0,0,7,2,1,0,'펫글램핑','https://i.postimg.cc/cHydrSvb/Frame-20.png','');
+insert into camping values(26, '050350587152', '고성 오션포레글램핑펜션', '안녕하세요. 오션포레글램핑펜션입니다.', '경상남도 고성군 회화면 회진로 321 ', 'www',0,0,7,2,1,0,'오션포레글램핑펜션','https://i.postimg.cc/htXkR52Z/Frame-9.png','');
+insert into camping values(27, '050350590338', '사천 비토섬신우리조트 글램핑N카라반', '안녕하세요. 오션포레글램핑펜션입니다.', '경상남도 사천시 서포면 토끼로 245-5 ', 'www',0,0,7,3,1,0,'비토섬신우리조트 글램핑N카라반','https://i.postimg.cc/Qt3w5xhv/Frame-29.png','');
+insert into camping values(24, '050350591901', '포항 포유카라반파크', '주중(월~목)이용시 제주도항공권 2인 + 렌트카 48시간 1매증정.(2박 3일 숙소는 자부담)', '경상북도 포항시 남구 구룡포읍 동해안로4176번길 12', 'www',0,0,7,3,1,0,'포유카라반파크','https://i.postimg.cc/VkhfPMm1/Frame-22.png','');
+insert into camping values(25, '050350590952', '제주 제주펜션선빈', '안녕하세요~ 침대에서는 바다뷰를 데크에서는 글램핑을 즐길 수 있는 편백황토힐링펜션 선빈펜션입니다!', '제주특별자치도 제주시 애월읍 신상로 256-3 에이동', 'www',0,0,5,1,1,0,'제주펜션선빈','https://i.postimg.cc/MZbx9NLy/Frame-7.png','');
+insert into camping values(29, '18339306', '서귀포 캠파제주펜션(마운틴뷰)', '해질녘 노을이 아름다운 장소 캠파제주 카라반은 일출경관과 해질녘 노을이 아름다운 장소이며 가족, 연인, 키즈를 위한 캠핑장입니다.', '제주특별자치도 서귀포시 516로 574-23', 'www',0,0,5,1,1,0,'캠파제주펜션','https://i.postimg.cc/4y40LLK5/Frame-14.png','');
+insert into camping values(28, '050350589735', '제주 홍스랜드글램핑', '안녕하세요. 제주 홍스랜드글램핑입니다.', '제주특별자치도 제주시 애월읍 어음13길 25-45', 'www',0,0,5,2,1,0,'홍스랜드글램핑','https://i.postimg.cc/wMWGSXLd/Frame-28.png','');
+insert into camping values(33, '050350588169', '제주 별헤는밤글램핑펜션', '천혜의 자연환경이 연출하는 캠핑분위기 경계 없이 펼쳐진 제주바다와 하늘, 온몸을 감싸는 저녁 노을, 밤바다에 수 놓인 별빛... 그 한가운데 자리잡은 별을 닮은 돔 펜션에서 바다, 구름, 노을, 별이 시시각각 연출하는 대형 파노라마를 즐기면서 가족, 연인, 친구와 함께 캠핑의 추억을 만들어보세요.', '제주특별자치도 제주시 애월읍 광상로 348', 'www',0,0,5,2,1,0,'별헤는밤글램핑펜션','https://i.postimg.cc/xdDNKB7W/Frame-11.png
+','');
+insert into camping values(30, '050350570025', '제주 메이더카라반', '구좌읍 동복리에 위치한 메이더카라반입니다.', '제주특별자치도 제주시 구좌읍 일주동로 1626', 'www',0,0,5,3,1,0,'메이더카라반','https://i.postimg.cc/m2Dq7nWZ/Frame-21.png','');
+insert into camping values(31, '050350573015', '여수 케렌시아리조트', '원래 Querencia(케렌시아)는 스페인어로 ‘애정, 애착, 귀소 본능, 안식처’ 등을 뜻하는 말로, 투우(鬪牛) 경기에서는 투우사와의 싸움 중에 소가 잠시 쉬면서 숨을 고르는 영역을 이른다고 합니다.', '전라남도 여수시 화양면 화양로 1527-32', 'www',0,0,4,1,1,0,'케렌시아리조트','https://i.postimg.cc/DzrJ5B3m/Frame-26.png','');
+insert into camping values(32, '050350590546', '진안 마이산풍혈냉천캠핑장', '안녕하세요. 새롭게 단장된 녹색정원 글램핑 뉴트로 컨셉으로 꾸며 방문하시는 분들이 재미있게 즐기시고 사진도 찍을 수 있도록 준비된 양장점글램핑 녹색정원과 양장점 컨셉으로 방문하시는 분들이 편안하게 힐링 하실 수 있도록 정성들여 준비했습니다.', '전라북도 진안군 성수면 용포로 345', 'www',0,0,4,1,1,0,'마이산풍혈냉천캠핑장','https://i.postimg.cc/wTMNHXLb/Frame-6.png','');
+insert into camping values(34, '050350591364', '신안 천사섬캠핑글램핑', '안녕하세요. 신안군 자은도의 캠핑 핫 플레이스 천사섬 캠핑글램핑입니다.', '전라남도 신안군 자은면 한운길 159', 'www',0,0,4,2,1,0,'천사섬캠핑글램핑','https://i.postimg.cc/vHKVm4v8/Frame-17.png','');
+insert into camping values(35, '050350580270', '무주 네버랜드펜션카라반캠핑', '덕유산 자락 750고지에 위치한 무주 네버랜드. 맑고 깨끗함을 상징하는 구천동 계곡 옆, 백두대간에 자리잡은 무주 네버랜드는 빼어난 경치와 청량한 공기를 자랑합니다.', '전라북도 무주군 무풍면 구천동로 289-55', 'www',0,0,4,3,1,0,'네버랜드펜션카라반캠핑','https://i.postimg.cc/G2bBfGbK/Frame-24.png','');
+insert into camping values(36, '050350582358', '무주 무주카라반펜션', '덕유산 자락 무주구천동 최상단, 구천동 계곡 맑은 물 소리가 전하는 자연 속 휴식 덕유산 국립공원 내 무주구천동 최상단에 위치한 무주 카라반펜션은 펜션 마당을 가로질러 흐르는 구천동 맑은 계곡과 덕유산 자락의 푸른 숲으로 둘러싸여 있는 자연 속 그림 같은 쉼터입니다.', '전라북도 무주군 설천면 구천동로 1048-8', 'www',0,0,4,3,1,0,'무주카라반펜션','https://i.postimg.cc/ZRj9znRS/Frame-35.png','');
+
+
+commit;
+
+
+insert into review values(1,'캠핑장 너무 좋아요',sysdate,5,1,'dddd',1);
+insert into review values(6,'캠핑존 가족과 함께하기 최고네요 좋아요',sysdate,5,9,'s111',2);
+insert into review values(3,'가성비 갑 ★★★★★',sysdate,5,10,'s111',3);
+insert into review values(4,'적극추천',sysdate,5,11,'s111',4);
+insert into review values(5,'적극추천',sysdate,5,12,'s111',5);
+insert into review values(7,'추웠지만 재밌었어요',sysdate,5,13,'s111',7);
+insert into review values(2,'친구들과 재밌었어요',sysdate,5,14,'s111',8);
+insert into review values(8,'추천',sysdate,5,15,'s111',9);
+insert into review values(9,'추웠지만 재밌었어요',sysdate,5,16,'s111',10);
+insert into review values(10,'따뜻해지면 다시올게요',sysdate,5,17,'s111',13);
+insert into review values(11,'여기진짜 최고',sysdate,5,18,'s111',11);
+insert into review values(12,'좋아요 별별별별별',sysdate,5,19,'s111',12);
+insert into review values(13,'좋아요',sysdate,5,20,'s111',15);
+insert into review values(14,'별5개',sysdate,5,21,'s111',16);
+insert into review values(15,'또올게요',sysdate,5,22,'s111',17);
+insert into review values(16,'두번째방문',sysdate,5,23,'s111',18);
+insert into review values(17,'강력추천',sysdate,5,24,'s111',19);
+insert into review values(18,'기대이상',sysdate,5,25,'s111',20);
+insert into review values(19,'최고',sysdate,5,26,'s111',21);
+insert into review values(20,'여기 좋아요',sysdate,5,27,'s111',22);
+insert into review values(21,'벌써 세번째',sysdate,5,28,'s111',23);
+insert into review values(22,'겨울마다 이곳만 와요',sysdate,5,29,'s111',24);
+insert into review values(23,'온 곳중 제일 좋음',sysdate,5,30,'s111',25);
+insert into review values(24,'뷰가 최고',sysdate,5,31,'s111',26);
+insert into review values(25,'힐링하고 갑니다',sysdate,5,32,'s111',27);
+insert into review values(27,'뷰 맛집',sysdate,5,34,'s111',29);
+insert into review values(28,'꼭 오세요',sysdate,5,35,'s111',30);
+insert into review values(29,'너무 좋음',sysdate,5,36,'s111',31);
+insert into review values(30,'가족들이랑  잘지내다 가요',sysdate,5,37,'s111',32);
+insert into review values(31,'덕분에 즐거운 여행되었어요',sysdate,5,38,'s111',33);
+insert into review values(32,'추천',sysdate,5,39,'s111',34);
+insert into review values(33,'너무좋았음',sysdate,5,40,'s111',35);
+insert into review values(34,'별5개',sysdate,5,41,'s111',36);
+insert into review values(35,'또올게요',sysdate,5,42,'s111',37);
+insert into review values(36,'두번째방문',sysdate,5,43,'s111',38);
+
+update camping set cReviewStarSum=5;
+update camping set cReviewCnt=1;
+commit;
+
+
+
+
+                                            insert into cArea values (1,'강원');
+                                            insert into cArea values (2,'경기/인천');
+                                            insert into cArea values (3,'서울/가평');
+                                            insert into cArea values (4,'전라');
+                                         	  insert into cArea values (5,'제주');
+                                            insert into cArea values (6,'충청');
+							insert into cArea values(7,'경상');
+
+
+
+insert into cType values (1,'캠핑');
+insert into cType values (2,'글램핑');
+insert into cType values (3,'차박');
+
+        commit;
+
+
+
+
+
+
+Insert into BOARD (BNO,BTITLE,BWRITETIME,USERNAME,BCATECODE,READCNT,GOODCNT,BADCNT,COMMENTCNT) values (11,'질문이요',to_date('22/11/07','RR/MM/DD'),'summer','1',1,0,0,0);
+Insert into BOARD (BNO,BTITLE,BWRITETIME,USERNAME,BCATECODE,READCNT,GOODCNT,BADCNT,COMMENTCNT) values (12,'어떻게해요 ?',to_date('22/11/07','RR/MM/DD'),'summer','1',4,0,0,0);
+Insert into BOARD (BNO,BTITLE,BWRITETIME,USERNAME,BCATECODE,READCNT,GOODCNT,BADCNT,COMMENTCNT) values (3,'아오오오',to_date('22/11/04','RR/MM/DD'),'summer','0',21,0,0,1);
+Insert into BOARD (BNO,BTITLE,BWRITETIME,USERNAME,BCATECODE,READCNT,GOODCNT,BADCNT,COMMENTCNT) values (4,' dd',to_date('22/11/04','RR/MM/DD'),'summer','0',23,0,0,1);
+Insert into BOARD (BNO,BTITLE,BWRITETIME,USERNAME,BCATECODE,READCNT,GOODCNT,BADCNT,COMMENTCNT) values (5,' 하이',to_date('22/11/04','RR/MM/DD'),'summer','0',6,0,0,1);
+Insert into BOARD (BNO,BTITLE,BWRITETIME,USERNAME,BCATECODE,READCNT,GOODCNT,BADCNT,COMMENTCNT) values (6,' sdfsdf',to_date('22/11/05','RR/MM/DD'),'spring','0',0,0,0,1);
+Insert into BOARD (BNO,BTITLE,BWRITETIME,USERNAME,BCATECODE,READCNT,GOODCNT,BADCNT,COMMENTCNT) values (9,' sdfsfd',to_date('22/11/06','RR/MM/DD'),'spring','0',1,0,0,1);
+Insert into BOARD (BNO,BTITLE,BWRITETIME,USERNAME,BCATECODE,READCNT,GOODCNT,BADCNT,COMMENTCNT) values (10,' 수정',to_date('22/11/06','RR/MM/DD'),'spring','1',11,0,0,1);
+Insert into BOARD (BNO,BTITLE,BWRITETIME,USERNAME,BCATECODE,READCNT,GOODCNT,BADCNT,COMMENTCNT) values (13,'ㄹㄹㄹㄹ',to_date('22/11/07','RR/MM/DD'),'summer','1',13,0,0,0);
+Insert into BOARD (BNO,BTITLE,BWRITETIME,USERNAME,BCATECODE,READCNT,GOODCNT,BADCNT,COMMENTCNT) values (14,'노하우 ',to_date('22/11/07','RR/MM/DD'),'summer','0',1,0,0,0);
+Insert into BOARD (BNO,BTITLE,BWRITETIME,USERNAME,BCATECODE,READCNT,GOODCNT,BADCNT,COMMENTCNT) values (15,'캠핑이란? ',to_date('22/11/07','RR/MM/DD'),'winter','0',2,0,0,1);
+Insert into BOARD (BNO,BTITLE,BWRITETIME,USERNAME,BCATECODE,READCNT,GOODCNT,BADCNT,COMMENTCNT) values (16,'캠핑장 추천해주세요',to_date('22/11/07','RR/MM/DD'),'winter','1',12,0,0,1);
+Insert into BOARD (BNO,BTITLE,BWRITETIME,USERNAME,BCATECODE,READCNT,GOODCNT,BADCNT,COMMENTCNT) values (18,'캠린이',to_date('22/11/07','RR/MM/DD'),'summer','0',11,0,0,1);
+Insert into BOARD (BNO,BTITLE,BWRITETIME,USERNAME,BCATECODE,READCNT,GOODCNT,BADCNT,COMMENTCNT) values (19,'자고로 캠핑이란',to_date('22/11/07','RR/MM/DD'),'winter','0',0,0,0,0);
+Insert into BOARD (BNO,BTITLE,BWRITETIME,USERNAME,BCATECODE,READCNT,GOODCNT,BADCNT,COMMENTCNT) values (20,'추울때 ',to_date('22/11/07','RR/MM/DD'),'winter','1',0,0,0,0);
+
+
+commit;
+
+update camping set c_username='s111';
+commit;
+
+
+
+     CREATE TABLE bCategori
+   (	"bCateCode" VARCHAR2(50 CHAR), 
+        "bCateName" VARCHAR2(50 CHAR)
+   ) ;
+   
+   insert into bCategori values ('01', 'QnA');
+   insert into bCategori values ('02', 'Knowhow');
+
+
+     CREATE TABLE bcomment
+   (	cno VARCHAR2(50 CHAR), 
+        cContent VARCHAR2(500 CHAR),
+        username VARCHAR2(100 CHAR),
+        cWriteTime DATE DEFAULT SYSDATE,
+        bno NUMBER(10) 
+   ) ;
+
+
+commit;
+
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (1,1,'프로키온',150000, EMPTY_CLOB(),'https://i.postimg.cc/h4r44GPj/1.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (2,1,'시리우스',150000, EMPTY_CLOB(),'https://i.postimg.cc/4dGZZDDV/2.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (3,1,'레굴루스',180000, EMPTY_CLOB(),'https://i.postimg.cc/QM1s28yj/3.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (4,1,'폴라리스',200000, EMPTY_CLOB(),'https://i.postimg.cc/kXGCnFp1/9.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (6,2,'하늘빛풍경B',180000, EMPTY_CLOB(),'https://i.postimg.cc/4yh15032/28.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (87,46,'캠핑존변경중A타입',180000, EMPTY_CLOB(),'http://localhost:8087/com/images/41.png',null,'Spring');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (88,46,'캠핑존B타입',160000, EMPTY_CLOB(),'http://localhost:8087/com/images/67.png',null,'Spring');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (6,3,'하늘빛풍경B',180000, EMPTY_CLOB(),'https://i.postimg.cc/4yh15032/28.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (5,3,'하늘빛풍경A',150000, EMPTY_CLOB(),'https://i.postimg.cc/Rhcgm8z6/45.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (9,4,'밸리지V1',150000, EMPTY_CLOB(),'https://i.postimg.cc/9QynVDCg/20.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (10,4,'밸리지V2',170000, EMPTY_CLOB(),'https://i.postimg.cc/G3N7yFpS/25.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (11,4,'밸리지V3',200000, EMPTY_CLOB(),'https://i.postimg.cc/JhPK4Jgx/26.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (12,4,'밸리지V4',250000, EMPTY_CLOB(),'https://i.postimg.cc/50ygHyWV/29.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (13,5,'COUPLE',150000, EMPTY_CLOB(),'https://i.postimg.cc/RFG0YCWN/56.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (14,5,'DELUX',190000, EMPTY_CLOB(),'https://i.postimg.cc/tT9TDnCK/57.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (15,5,'GRAND',230000, EMPTY_CLOB(),'https://i.postimg.cc/2SvSD7qp/58.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (26,7,'고래의꿈',150000, EMPTY_CLOB(),'https://i.postimg.cc/WpBRvL03/32.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (21,8,'디럭스A',150000, EMPTY_CLOB(),'https://i.postimg.cc/bJm5M4pz/14.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (28,7,'사랑의물결',150000, EMPTY_CLOB(),'https://i.postimg.cc/J7PmVdPH/8.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (22,8,'디럭스B',150000, EMPTY_CLOB(),'https://i.postimg.cc/tRPSF1Vq/49.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (30,9,'레이존스',150000, EMPTY_CLOB(),'https://i.postimg.cc/vmMSmGmY/18.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (27,7,'여우의정원',150000, EMPTY_CLOB(),'https://i.postimg.cc/W4bCn2c9/38.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (16,5,'FAMILY',300000, EMPTY_CLOB(),'https://i.postimg.cc/NMX48VFJ/50.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (25,7,'때는바야흐로',150000, EMPTY_CLOB(),'https://i.postimg.cc/nzWkqxnQ/30.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (31,9,'하나라카',150000, EMPTY_CLOB(),'https://i.postimg.cc/q7RDKj2S/43.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (23,8,'디럭스-프리미엄A',250000, EMPTY_CLOB(),'https://i.postimg.cc/SR2pGmC0/72.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (24,8,'디럭스-프리미엄B',250000, EMPTY_CLOB(),'https://i.postimg.cc/66gKpGxB/73.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (29,9,'디아망스',150000, EMPTY_CLOB(),'https://i.postimg.cc/Z5r4gYg4/67.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (32,9,'테리야망',150000, EMPTY_CLOB(),'https://i.postimg.cc/RFG0YCWN/56.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (33,18,'오렌지A',180000, EMPTY_CLOB(),'https://i.postimg.cc/Nf0kcqqw/50.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (34,18,'오렌지B',180000, EMPTY_CLOB(),'https://i.postimg.cc/fTgjW2DS/51.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (35,19,'인디언S',180000, EMPTY_CLOB(),'https://i.postimg.cc/qMXV9KTF/11.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (36,19,'인디언M',200000, EMPTY_CLOB(),'
+https://i.postimg.cc/jSx0KjqS/13.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (37,19,'인디언Q',220000, EMPTY_CLOB(),'https://i.postimg.cc/N0ZzyGtT/25.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (38,19,'인디언K',250000, EMPTY_CLOB(),'https://i.postimg.cc/QC3Yb6Hd/27.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (39,21,'HAVANA',250000, EMPTY_CLOB(),'https://i.postimg.cc/vBqD7KPW/74.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (40,21,'HAKUNA',280000, EMPTY_CLOB(),'https://i.postimg.cc/cCvCFcjP/75.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (41,22,'금산오토A',250000, EMPTY_CLOB(),'https://i.postimg.cc/fynpPzgZ/17.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (42,22,'금산오토B',280000, EMPTY_CLOB(),'https://i.postimg.cc/44Vr9cm3/19.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (43,25,'제주선ZONE',200000, EMPTY_CLOB(),'https://i.postimg.cc/CM7sXM2N/49.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (44,25,'제주빈ZONE',250000, EMPTY_CLOB(),'https://i.postimg.cc/HLbQ2T5b/54.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (45,25,'제주선PREMIUM',300000, EMPTY_CLOB(),'https://i.postimg.cc/W3ngBS53/56.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (46,25,'제주빈PREMIUM',300000, EMPTY_CLOB(),'https://i.postimg.cc/hG8dmpWr/64.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (47,28,'홍스A',200000, EMPTY_CLOB(),'https://i.postimg.cc/kXdP1ck8/10.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (48,28,'홍스B',250000, EMPTY_CLOB(),'https://i.postimg.cc/6qrgJkDZ/18.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (49,28,'홍스C',300000, EMPTY_CLOB(),'https://i.postimg.cc/LXMVKJRy/45.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (50,28,'홍스D',300000, EMPTY_CLOB(),'https://i.postimg.cc/HW6b3ZJv/59.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (51,29,'마운틴A',200000, EMPTY_CLOB(),'https://i.postimg.cc/wxNdQPbg/7.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (52,29,'마운틴B',250000, EMPTY_CLOB(),'https://i.postimg.cc/Y95Bwf05/8.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (53,29,'마운틴C',300000, EMPTY_CLOB(),'https://i.postimg.cc/C5bTMBfz/9.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (54,30,'카라반A',200000, EMPTY_CLOB(),'https://i.postimg.cc/pdv9Pzhn/70.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (55,30,'카라반B',250000, EMPTY_CLOB(),'https://i.postimg.cc/nhBj80zJ/71.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (56,30,'카라반C',300000, EMPTY_CLOB(),'https://i.postimg.cc/jjhD22P3/72.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (57,31,'푸른',200000, EMPTY_CLOB(),'https://i.postimg.cc/qRj6bq76/65.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (58,31,'초록',250000, EMPTY_CLOB(),'https://i.postimg.cc/Vvvr3wSG/66.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (59,32,'냉천A',200000, EMPTY_CLOB(),'https://i.postimg.cc/zGxmf13S/12.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (60,32,'냉천B',250000, EMPTY_CLOB(),'https://i.postimg.cc/TwWBQL0C/16.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (61,32,'냉천C',300000, EMPTY_CLOB(),'https://i.postimg.cc/jjn8rVfj/34.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (62,33,'바다',200000, EMPTY_CLOB(),'https://i.postimg.cc/zG85Bj75/2.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (63,33,'구름',250000, EMPTY_CLOB(),'https://i.postimg.cc/vHyCLmVt/20.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (64,33,'노을',300000, EMPTY_CLOB(),'https://i.postimg.cc/L867w0vq/22.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (65,33,'별',300000, EMPTY_CLOB(),'https://i.postimg.cc/QC3Yb6Hd/27.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (66,33,'바다',200000, EMPTY_CLOB(),'https://i.postimg.cc/zG85Bj75/2.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (67,33,'구름',250000, EMPTY_CLOB(),'https://i.postimg.cc/vHyCLmVt/20.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (68,33,'노을',300000, EMPTY_CLOB(),'https://i.postimg.cc/L867w0vq/22.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (69,33,'별',300000, EMPTY_CLOB(),'https://i.postimg.cc/QC3Yb6Hd/27.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (70,34,'A',200000, EMPTY_CLOB(),'https://i.postimg.cc/rFSMMbSQ/1.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (71,34,'B',250000, EMPTY_CLOB(),'https://i.postimg.cc/jjD1dwpt/24.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (72,34,'C',300000, EMPTY_CLOB(),'https://i.postimg.cc/6Qqk21vs/14.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (73,34,'D',300000, EMPTY_CLOB(),'https://i.postimg.cc/Cxz7jym4/42.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (80,40,'ddd',1212, EMPTY_CLOB(),'http://localhost:8087/com/images/Rectangle 93.png',null,'Spring');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (75,37,null,244448, EMPTY_CLOB(),'http://localhost:8087/com/images/OIP.jpg',null,'Spring');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (76,37,'룰루',120000, EMPTY_CLOB(),'http://localhost:8087/com/images/OIP.jpg',null,'Spring');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (77,37,null,20000000, EMPTY_CLOB(),'http://localhost:8087/com/images/OIP.jpg',null,'Spring');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (78,37,'ewrewrewr',112313113, EMPTY_CLOB(),'http://localhost:8087/com/images/OIP.jpg',null,'Spring');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (79,40,'ddd',2121, EMPTY_CLOB(),'http://localhost:8087/com/images/Rectangle 93.png',null,'Spring');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (81,40,'asdas',12121, EMPTY_CLOB(),'http://localhost:8087/com/images/Rectangle 93.png',null,'Spring');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (82,40,'afs',1214, EMPTY_CLOB(),'http://localhost:8087/com/images/Rectangle 93.png',null,'Spring');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (83,45,'dddd',1222222222, EMPTY_CLOB(),'http://localhost:8087/com/images/Frame 10 (1).png',null,'Spring');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (84,45,'dasf',12121, EMPTY_CLOB(),'http://localhost:8087/com/images/Frame 10 (1).png',null,'Spring');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (85,45,'dfadf',1212, EMPTY_CLOB(),'http://localhost:8087/com/images/Frame 10 (1).png',null,'Spring');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (86,45,'dfa',1212, EMPTY_CLOB(),'http://localhost:8087/com/images/Frame 10 (1).png',null,'Spring');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (7,3,'하늘빛풍경C',180000, EMPTY_CLOB(),'https://i.postimg.cc/zfZYFmX6/7.png',null,'s111');
+Insert into CZONE (CZCODE,CZ_CCODE,CZNAME,CZPRICE,CZCONTENT,CZPHOTO,CZFILENAME,CZ_USERNAME) values (8,3,'하늘빛풍경D',250000, EMPTY_CLOB(),'https://i.postimg.cc/kG0P1Lv2/70.png',null,'s111');
+
+
+commit;
